@@ -357,6 +357,8 @@ const DropDownTerminal = new Lang.Class({
         window.connect("enter_notify_event", Lang.bind(this, this._windowMouseEnter));
         window.connect("delete-event", function() { window.hide(); return true; });
         window.connect("destroy", Gtk.main_quit);
+        // add by zhb
+        window.connect("focus-out-event", function() { window.hide(); return true; });
 
         return window;
     },
