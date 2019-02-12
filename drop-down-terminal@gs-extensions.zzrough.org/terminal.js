@@ -272,7 +272,6 @@ const DropDownTerminal = new Lang.Class({
         Convenience.runInGdk(Lang.bind(this, function() {
             this._window.visible ? this._window.hide()
                                  : this._window.show();
-
             return false;
         }));
     },
@@ -357,8 +356,15 @@ const DropDownTerminal = new Lang.Class({
         window.connect("enter_notify_event", Lang.bind(this, this._windowMouseEnter));
         window.connect("delete-event", function() { window.hide(); return true; });
         window.connect("destroy", Gtk.main_quit);
+
         // add by zhb
         window.connect("focus-out-event", function() { window.hide(); return true; });
+        window.connect("key-press-event", (widget, event, user_data) => {
+            let [success, keyval] = event.get_keyval(); // integer
+            let keyname = Gdk.keyval_name(keyval); // string keyname
+
+            if (keyname === "Escape") { window.hide(); }
+        });
 
         return window;
     },
