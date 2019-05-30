@@ -362,8 +362,8 @@ const DropDownTerminal = new Lang.Class({
         window.connect("key-press-event", (widget, event, user_data) => {
             let [success, keyval] = event.get_keyval(); // integer
             let keyname = Gdk.keyval_name(keyval); // string keyname
-
-            if (keyname === "Escape") { window.hide(); }
+            if (keyname === "Alt_R") { window.hide(); }
+            //if (keyname === "Escape") { window.hide(); }
         });
 
         return window;
@@ -631,4 +631,3 @@ GLib.set_prgname("drop-down-terminal");
 
 // starts the main loop
 Gtk.main();
-
