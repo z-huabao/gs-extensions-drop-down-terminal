@@ -1,12 +1,16 @@
-Drop down terminal forked from `zzrough/gs-extensions-drop-down-terminal`, 
-add feature: 
-  auto hide terminal when loss focus;
-  hide when press right Alt.
-  open shortcut use `Alt-T` recommended.
+Drop down terminal forked from `zzrough/gs-extensions-drop-down-terminal`
 
-`terminal.js`
-``` javascript
-            // add by zhb
+# add feature: 
+  * auto hide terminal when loss focus;
+  * hide when press right Alt.
+  * open shortcut use `Alt-T` recommended.
+
+--------------------------------
+
+# diff: 
+`terminal.js`:
+```javascript
+360         // add by zhb
 361	        window.connect("focus-out-event", function() { window.hide(); return true; });
 362	        window.connect("key-press-event", (widget, event, user_data) => {
 363		          let [success, keyval] = event.get_keyval(); // integer
